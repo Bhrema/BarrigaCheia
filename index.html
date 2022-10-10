@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <header class="p-3 bg-dark text-white">
+    <header class="p-3 bg-dark text-white position-fixed position-sticky">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -36,7 +36,7 @@
           </div>
         </div>
     </header>
-    <section class="row">
+    <section class="row d-flex">
         <div class="col-7 bg-image" style="background-image: url('https://www.infoans.org/images/05-Galleria-Fotografica/RMG%20-%20Querida%20Amazzonia%20-%202020/14-AMAZZONIA-04.JPG'); background-repeat: no-repeat;">
             <div class="px-4 pt-5 my-5 text-center">
                 <h1 class="display-4 fw-bold text-white">Ajude-nos à ajudar!</h1>
@@ -51,7 +51,7 @@
                 </div>
               </div>
         </div>
-        <div class="col-4 mt-2">
+        <div class="col-5 mt-3">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-7 col-lg-8">
                   <h4 class="mb-3">Informações Pessoais</h4>
@@ -83,7 +83,7 @@
           
                       <div class="col-12">
                         <label for="address" class="form-label">Telefone</label>
-                        <input type="number" class="form-control" id="address" placeholder="0000-0000" required="">
+                        <input type="phone" class="form-control phone-mask" id="address" placeholder="0000-0000" required="">
                         <div class="invalid-feedback">
                           Please enter your shipping address.
                         </div>
@@ -94,12 +94,12 @@
                             Aceito receber mensagens por WhatsApp.
                         </label>
                       </div>   
-                    <hr class="my-4">
+                      <hr class="my-4">
+                    </div>
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Junte-se a nós</button>
                   </form>
                 </div>
-              </div>
-        </div>
+            </div>
     </section>
     <section>
         <div class="container px-4 py-5" id="custom-cards">        
