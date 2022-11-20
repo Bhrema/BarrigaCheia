@@ -1,5 +1,6 @@
 <?php
 require_once "../config.php";
+include "cadastro.php";
 ?>
 
 <!DOCTYPE html>
@@ -46,149 +47,82 @@ require_once "../config.php";
           </div>
         </div>
         <!-- Modal Cadastrar-->
-        <?php
-          // Startando as variáveis
-          $nome = $email = $cep = $numero = $complemento = $uf = $cpfCnpj = "";
-          $nome_err = $email_err = $cep_err = $uf_err = $cpfCnpj_err = "";
-          //validando os dados
-          if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-            // validando nome
-            $input_name = trim($_POST["nome"]);
-            if(empty($input_name)){
-                $nome_err = "Por favor entre com um nome.";
-            } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-                $nome_err = "Por favor entre com um nome válido.";
-            } else{
-                $nome = $input_name;
-            }
-
-            //validando CEP
-            $input_cep = trim($_POST["cep"]);
-            if(empty($input_cep)){
-                $cep_err = "Por favor entre com um CEP.";
-            } elseif(!filter_var($input_cep, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[0-9]{5}-[0-9]{3}$/")))){
-                $cep_err = "Por favor entre com um CEP válido.";
-            } else{
-                $cep = $input_cep;
-            }
-
-            //validando email
-            $input_email = trim($_POST["email"]);
-            if(empty($input_email)){
-                $email_err = "Por favor entre com um email.";
-            } elseif(!filter_var($input_email, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i")))){
-                $email_err = "Por favor entre com um email válido.";
-            } else{
-                $email = $input_email;
-            }
-
-            //validando UF
-            $input_uf = trim($_POST["uf"]);
-            if(empty($input_uf)){
-                $uf_err = "Por favor entre com uma sigla.";
-            } elseif(!filter_var($input_uf, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"^(?i)(\s*(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO)?)$")))){
-                $uf_err = "Por favor entre com um email válido.";
-            } else{
-                $uf = $input_uf;
-            }
-
-            //validando numero
-            $input_numero = trim($_POST["numero"]);
-            if(empty($input_numero)){
-                $numero_err = "Por favor entre com um número.";
-            } else{
-                $numero = $input_numero;
-            }
-
-            //validando cpf/cnpj
-            $input_cpfCnpj = trim($_POST["numero"]);
-            if(empty($input_cpfCnpj)){
-                $cpfCnpj_err = "Por favor entre com CPF ou CNPJ.";
-            } else{
-                $cpfCnpj = $input_cpfCnpj;
-            }
-            
-            // Checando se os inputs contém erro antes de inserir no DB
-            if(empty($nome_err) && empty($email_err) && empty($cep_err) && empty($uf_err) && empty($cpfCnpj_err)){
-                // Criando o SQL de insert
-                $sql = "INSERT INTO employees (name, address, salary) VALUES (?, ?, ?)";
-        
-                if($stmt = $mysqli->prepare($sql)){
-                    // Bind variables to the prepared statement as parameters
-                    $stmt->bind_param("sss", $param_name, $param_address, $param_salary);
-                    
-                    // Set parameters
-                    $param_name = $name;
-                    $param_address = $address;
-                    $param_salary = $salary;
-                    
-                    // Attempt to execute the prepared statement
-                    if($stmt->execute()){
-                        // Records created successfully. Redirect to landing page
-                        header("location: index.php");
-                        exit();
-                    } else{
-                        echo "Oops! Something went wrong. Please try again later.";
-                    }
-                }
-                
-                // Close statement
-                $stmt->close();
-            }
-          }
-        ?>
-    <div class="modal fade" id="modalCadastrar" tabindex="1000" aria-labelledby="modalCadastrarLabel" aria-hidden="true">
+    <div class="modal fade" id="modalCadastrar" tabindex="1000" action=cadastro.php method="post" aria-labelledby="modalCadastrarLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title text-secondary">Realize o seu cadastro agora!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>0
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form class="row g-3 needs-validation" novalidate>
+            <form class="row g-3 needs-validation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
               <div class="col-md-6">
                 <label for="validationCustom01" class="form-label text-secondary">Nome Completo</label>
-                <input type="text" class="form-control" id="validationCustom01" value="" required>
+                <!-- <input type="text" class="form-control" id="validationCustom01" name="input_nome" required> -->
+                <input type="text" name="input_nome" class="form-control"  value="" required>
                 <div class="valid-feedback">
                   Sucesso!
                 </div>
               </div>
               <div class="col-md-6">
                 <label for="email" class="form-label text-secondary">Email <span class="text-muted">(Opcional)</span></label>
-                <input type="email" class="form-control" id="email" placeholder="seuEmail@exemplo.com">
+                <!-- <input type="email" class="form-control" id="email" name="input_email" placeholder="seuEmail@exemplo.com"> -->
+                <input type="email" name="input_email" class="form-control" placeholder="seuEmail@exemplo.com" required>
                 <div class="invalid-feedback">
                   Por favor entre com um email para receber as novidades.
                 </div>
               </div>
               <div class="col-md-4">
                 <label for="validationCustom03" class="form-label text-secondary">CEP</label>
-                <input type="number" class="form-control" id="validationCustom03" required>
+                <!-- <input type="text" class="form-control" id="validationCustom03" name="input_cep" required> -->
+                <input type="text" name="input_cep" class="form-control"  value="" required>
                 <div class="invalid-feedback">
                   Por favor entre com um CEP válido.
                 </div>
               </div>
               <div class="col-md-2">
                 <label for="validationCustom04" class="form-label text-secondary">Estado</label>
-                <input type="text" class="form-control" id="validationCustom04" required>
+                <!-- <input type="text" class="form-control" id="validationCustom04" name="input_uf" required> -->
+                <input type="text" name="input_uf" class="form-control"  value="" required>
+
                 <div class="invalid-feedback">
                   Por favor entre com um número válido.
                 </div>
               </div>
               <div class="col-md-3">
                 <label for="validationCustom05" class="form-label text-secondary">Número</label>
-                <input type="number" class="form-control" id="validationCustom05" required>
+                <!-- <input type="text" class="form-control" id="validationCustom05" name="input_numero" required> -->
+                <input type="text" name="input_numero" class="form-control"  value="" required>
+
                 <div class="invalid-feedback">
                   Por favor entre com um número válido.
                 </div>
               </div>
               <div class="col-md-3">
                 <label for="validationCustom06" class="form-label text-secondary">Complemento</label>
-                <input type="text" class="form-control" id="validationCustom06">
+                <!-- <input type="text" class="form-control" id="validationCustom06" name="input_complemento"> -->
+                <input type="text" name="input_complemento" class="form-control"  value="" required>
+
               </div>
               <div class="col-12">
                 <label for="validationCustom06" class="form-label text-secondary">CPF/CNPJ</label>
-                <input type="text" class="form-control" id="validationCustom06" value="" required>
+                <!-- <input type="text" class="form-control" id="validationCustom06" name="input_cpfCnpj" required> -->
+                <input type="text" name="input_cpfCnpj" class="form-control"  value="" required>
+
+                <div class="valid-feedback">
+                  Sucesso!
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom01" class="form-label text-secondary">Senha</label>
+                <input type="password" name="input_passw" class="form-control"  value="" required>
+                <div class="valid-feedback">
+                  Sucesso!
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom01" class="form-label text-secondary">Confirma senha</label>
+                <input type="password" name="input_verpassw" class="form-control"  value="" required>
                 <div class="valid-feedback">
                   Sucesso!
                 </div>
@@ -204,12 +138,12 @@ require_once "../config.php";
                   </div>
                 </div>
               </div>
-            </div>
+              
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Cadastrar</button>
-            </form>
-          </div>
+              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button> -->
+              <input type="submit" class="btn btn-primary" name="btnSend" id="btnSend" value="Cadastrar ">
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -224,14 +158,14 @@ require_once "../config.php";
             <form class="row g-3 needs-validation" novalidate>
               <div class="col-md-12">
                 <label for="validationCustom01" class="form-label text-secondary">Seu e-mail</label>
-                <input type="text" class="form-control" id="validationCustom01" value="" required>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="seuEmail@exemplo.com" required>
                 <div class="valid-feedback">
                   Sucesso!
                 </div>
               </div>
               <div class="col-md-12">
                 <label for="email" class="form-label text-secondary">Senha</label>
-                <input type="email" class="form-control" id="email" placeholder="seuEmail@exemplo.com" required>
+                <input type="email" class="form-control" id="email" placeholder="" required>
                 <div class="invalid-feedback">
                   Por favor entre com um email para receber as novidades.
                 </div>
