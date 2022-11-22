@@ -36,7 +36,7 @@ include "cadastro.php";
     
             <div class="text-end">
               <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalCadastrar">
-                Login
+                Cadastre-se
               </button>
             </div>
             <div class="text-end ms-3">
@@ -55,10 +55,17 @@ include "cadastro.php";
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form class="row g-3 needs-validation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <p class="text-danger"><?= $nome_err ?? '' ?></p>
+            <p class="text-danger"><?= $email_err ?? '' ?></p>
+            <p class="text-danger"><?= $cep_err ?? '' ?></p>
+            <p class="text-danger"><?= $uf_err ?? '' ?></p>
+            <p class="text-danger"><?= $cpfCnpj_err ?? '' ?></p>
+            <p class="text-danger"><?= $passw_err ?? '' ?></p>
+            <p class="text-danger"><?= $verpassw_err ?? '' ?></p>
+            <form class="row g-3 needs-validation" action="" method="post">
               <div class="col-md-6">
                 <label for="validationCustom01" class="form-label text-secondary">Nome Completo</label>
-                <!-- <input type="text" class="form-control" id="validationCustom01" name="input_nome" required> -->
+
                 <input type="text" name="input_nome" class="form-control"  value="" required>
                 <div class="valid-feedback">
                   Sucesso!
@@ -66,7 +73,6 @@ include "cadastro.php";
               </div>
               <div class="col-md-6">
                 <label for="email" class="form-label text-secondary">Email <span class="text-muted">(Opcional)</span></label>
-                <!-- <input type="email" class="form-control" id="email" name="input_email" placeholder="seuEmail@exemplo.com"> -->
                 <input type="email" name="input_email" class="form-control" placeholder="seuEmail@exemplo.com" required>
                 <div class="invalid-feedback">
                   Por favor entre com um email para receber as novidades.
@@ -74,7 +80,6 @@ include "cadastro.php";
               </div>
               <div class="col-md-4">
                 <label for="validationCustom03" class="form-label text-secondary">CEP</label>
-                <!-- <input type="text" class="form-control" id="validationCustom03" name="input_cep" required> -->
                 <input type="text" name="input_cep" class="form-control"  value="" required>
                 <div class="invalid-feedback">
                   Por favor entre com um CEP válido.
@@ -82,33 +87,25 @@ include "cadastro.php";
               </div>
               <div class="col-md-2">
                 <label for="validationCustom04" class="form-label text-secondary">Estado</label>
-                <!-- <input type="text" class="form-control" id="validationCustom04" name="input_uf" required> -->
                 <input type="text" name="input_uf" class="form-control"  value="" required>
-
                 <div class="invalid-feedback">
                   Por favor entre com um número válido.
                 </div>
               </div>
               <div class="col-md-3">
                 <label for="validationCustom05" class="form-label text-secondary">Número</label>
-                <!-- <input type="text" class="form-control" id="validationCustom05" name="input_numero" required> -->
                 <input type="text" name="input_numero" class="form-control"  value="" required>
-
                 <div class="invalid-feedback">
                   Por favor entre com um número válido.
                 </div>
               </div>
               <div class="col-md-3">
                 <label for="validationCustom06" class="form-label text-secondary">Complemento</label>
-                <!-- <input type="text" class="form-control" id="validationCustom06" name="input_complemento"> -->
-                <input type="text" name="input_complemento" class="form-control"  value="" required>
-
+                <input type="text" name="input_complemento" class="form-control"  value="">
               </div>
               <div class="col-12">
                 <label for="validationCustom06" class="form-label text-secondary">CPF/CNPJ</label>
-                <!-- <input type="text" class="form-control" id="validationCustom06" name="input_cpfCnpj" required> -->
                 <input type="text" name="input_cpfCnpj" class="form-control"  value="" required>
-
                 <div class="valid-feedback">
                   Sucesso!
                 </div>
@@ -138,9 +135,7 @@ include "cadastro.php";
                   </div>
                 </div>
               </div>
-              
             <div class="modal-footer">
-              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button> -->
               <input type="submit" class="btn btn-primary" name="btnSend" id="btnSend" value="Cadastrar ">
             </div>
           </form>
