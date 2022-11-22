@@ -21,8 +21,8 @@ if(isset($email, $passw) && !empty($email && $passw)) {
 
     if ($row->rowCount() > 0) {
         $_SESSION['cpfCnpj'] = $user['cpfCnpj'];
-
-        header("location: dashboard.php");
+        
+        header("location: rotas.php");
     } else{
         $_SESSION['msg'] = 'Campos preenchidos incorretamente!';
     }

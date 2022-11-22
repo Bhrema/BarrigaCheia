@@ -2,7 +2,7 @@
 require "../config.php";
 
 //validando os dados
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+
     // validando nome
     $input_name = isset($_POST["input_nome"]) ? trim($_POST["input_nome"]) : '';
     if(empty($input_name))
@@ -45,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else
         $cpfCnpj = addslashes($input_cpfCnpj);
 
-    //validando numero
+    //validando numero talvez aqui esteja quebrando
     $input_numero = isset($_POST["input_numero"]) ? trim($_POST["input_numero"]) : '';
     if(!empty($input_numero))
         $numero = addslashes($input_numero);
@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $verpassw_err = "As senhas não correspondem, favor repetir o processo.";
     else{
         $passw = $input_passw;
-        $verpassw = true;
+        //$verpassw = true;
     }
 
     if(empty($nome_err) && empty($email_err) && empty($cep_err) && empty($uf_err) 
@@ -72,8 +72,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          VALUES ('$nome', '$email', '$cep', '$numero', '$complemento', '$uf', '$cpfCnpj', '$passw', '$verpassw')";
          
         if($conn->query($sql) === TRUE){
-            header("location: index.php");
+            header('Location: index.php');
         }
     }   
-}
+
 
