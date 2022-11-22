@@ -1,6 +1,6 @@
 <?php
+session_start();
 require_once "../config.php";
-include "cadastro.php";
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +62,7 @@ include "cadastro.php";
             <p class="text-danger"><?= $cpfCnpj_err ?? '' ?></p>
             <p class="text-danger"><?= $passw_err ?? '' ?></p>
             <p class="text-danger"><?= $verpassw_err ?? '' ?></p>
-            <form class="row g-3 needs-validation" action="" method="post">
+            <form class="row g-3 needs-validation" action="cadastro.php" method="post">
               <div class="col-md-6">
                 <label for="validationCustom01" class="form-label text-secondary">Nome Completo</label>
 
@@ -142,33 +142,36 @@ include "cadastro.php";
         </div>
       </div>
     </div>
+    </div>
     <div class="modal fade" id="modalLogin" tabindex="1000" aria-labelledby="modalLoginLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-secondary">Faça o seu login!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>0
-          </div>
-          <div class="modal-body">
-            <form class="row g-3 needs-validation" novalidate>
-              <div class="col-md-12">
-                <label for="validationCustom01" class="form-label text-secondary">Seu e-mail</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="seuEmail@exemplo.com" required>
-                <div class="valid-feedback">
-                  Sucesso!
-                </div>
-              </div>
-              <div class="col-md-12">
-                <label for="email" class="form-label text-secondary">Senha</label>
-                <input type="email" class="form-control" id="email" placeholder="" required>
-                <div class="invalid-feedback">
-                  Por favor entre com um email para receber as novidades.
-                </div>
+        <div class="modal-header">
+          <h5 class="modal-title text-secondary">Faça o seu login!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form class="row g-3 needs-validation" action="login.php" method="post">
+            <div class="col-md-12">
+              <label for="validationCustom01" class="form-label text-secondary">Seu e-mail</label>
+              <input type="text" name="email" class="form-control" id="validationCustom01" placeholder="seuEmail@exemplo.com" required>
+              <div class="valid-feedback">
+                Sucesso!
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Entrar</button>
+            <div class="col-md-12">
+              <label for="password" class="form-label text-secondary">Senha</label>
+              <input type="password" name="password" class="form-control" id="password" placeholder="" required>
+              <div class="invalid-feedback">
+                Por favor entre com um email para receber as novidades.
+              </div>
+            </div>
+        </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
           </div>
         </div>
