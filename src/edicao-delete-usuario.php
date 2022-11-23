@@ -154,7 +154,6 @@ $(document).ready(function(){
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Nome <i class="fa fa-sort"></i></th>
                         <th>Email</th>
                         <th>CEP <i class="fa fa-sort"></i></th>
@@ -164,71 +163,20 @@ $(document).ready(function(){
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach($users as $user): ?>
                     <tr>
-                        <td>1</td>
-                        <td>Thomas Hardy</td>
-                        <td>89 Chiaroscuro Rd.</td>
-                        <td>Portland</td>
-                        <td>97219</td>
-                        <td>USA</td>
+                        <td><?php echo $user['nome']; ?></td>
+                        <td><?php echo $user['email']; ?></td>
+                        <td><?php echo $user['cep']; ?></td>
+                        <td><?php echo $user['numero']; ?></td>
+                        <td>Motorista</td>
                         <td>
                             <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                             <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Maria Anders</td>
-                        <td>Obere Str. 57</td>
-                        <td>Berlin</td>
-                        <td>12209</td>
-                        <td>Germany</td>
-                        <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Fran Wilson</td>
-                        <td>C/ Araquil, 67</td>
-                        <td>Madrid</td>
-                        <td>28023</td>
-                        <td>Spain</td>
-                        <td>
-                            <button href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></button>
-                            <button class="edit" data-toggle="modal" data-target="#editaUser"><i class="material-icons">&#xE254;</i></button>
-                            <button href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Dominique Perrier</td>
-                        <td>25, rue Lauriston</td>
-                        <td>Paris</td>
-                        <td>75016</td>
-                        <td>France</td>
-                        <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Martin Blank</td>
-                        <td>Via Monte Bianco 34</td>
-                        <td>Turin</td>
-                        <td>10100</td>
-                        <td>Italy</td>
-                        <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>        
+                    </tr>    
+                    <?php endforeach; ?>
                 </tbody>
             </table>
             <div class="clearfix">

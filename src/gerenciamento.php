@@ -1,3 +1,17 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['cpfCnpj']))
+    header("location: index.php");
+    
+  require_once "../config.php";
+
+  $sql = "SELECT * FROM cadastro";
+ 
+  $users = $conn->query($sql);
+  $users->fetch_assoc();
+
+?>
 <!doctype html>
 <html lang="en">
   <head>

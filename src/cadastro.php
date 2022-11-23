@@ -2,7 +2,7 @@
 require "../config.php";
 
 //validando os dados
-echo $_POST['input_nome'];
+if($_SERVER["REQUEST_METHOD"] == "POST"){
     // validando nome
     $input_name = isset($_POST["input_nome"]) ? trim($_POST["input_nome"]) : '';
     if(empty($input_name))
@@ -68,12 +68,19 @@ echo $_POST['input_nome'];
     if(!isset($nome_err) && !isset($email_err) && !isset($cep_err) && !isset($uf_err) 
        && !isset($cpfCnpj_err) && !isset($passw_err) && !isset($verpassw_err)){
 
-    $sql = "INSERT INTO cadastro (nome, email, cep, numero, complemento, uf, cpfCnpj, passw, verpassw)
-        VALUES ('$nome', '$email', '$cep', '$numero', '$complemento', '$uf', '$cpfCnpj', '$passw', '$verpassw')";
+        $sql = "SELECT * FROM cadastro WHERE cpfCnpj = '$cpfCnpj'";
         
-    if($conn->query($sql) === TRUE){
-        header('Location: index.php');
+        $exists = $conn->query($sql);
+        if ($exists->num_rows > 0) {      
+            echo "Já existe um usuário com eeste CPF/CNPJ.";
+            exit();
+        }
+
+        $sql = "INSERT INTO cadastro (nome, email, cep, numero, complemento, uf, cpfCnpj, passw, verpassw)
+            VALUES ('$nome', '$email', '$cep', '$numero', '$complemento', '$uf', '$cpfCnpj', '$passw', '$verpassw')";
+            
+        if($conn->query($sql) === TRUE){
+            header('Location: index.php');
+        }
     }
-       
-
-
+}
