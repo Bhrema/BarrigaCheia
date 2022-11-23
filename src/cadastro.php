@@ -2,7 +2,7 @@
 require "../config.php";
 
 //validando os dados
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER["REQUEST_METHOD"] == "POST"){    
     // validando nome
     $input_name = isset($_POST["input_nome"]) ? trim($_POST["input_nome"]) : '';
     if(empty($input_name))

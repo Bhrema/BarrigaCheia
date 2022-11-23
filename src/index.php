@@ -78,7 +78,7 @@ require_once "../config.php";
               </div>
               <div class="col-md-4">
                 <label for="validationCustom03" class="form-label text-secondary">CEP</label>
-                <input type="text" name="input_cep" class="form-control"  value="" required>
+                <input type="text" name="input_cep" class="form-control" placeholder="xxxxx-xxx"  value="" required>
                 <div class="invalid-feedback">
                   Por favor entre com um CEP válido.
                 </div>
@@ -103,7 +103,7 @@ require_once "../config.php";
               </div>
               <div class="col-12">
                 <label for="validationCustom06" class="form-label text-secondary">CPF/CNPJ</label>
-                <input type="text" name="input_cpfCnpj" class="form-control"  value="" required>
+                <input type="text" name="input_cpfCnpj" class="form-control"   value="" required>
                 <div class="valid-feedback">
                   Sucesso!
                 </div>

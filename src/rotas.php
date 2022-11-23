@@ -138,6 +138,7 @@
               </p>
             </a>
           </li>
+          <?php include 'btnLogout.html' ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

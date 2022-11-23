@@ -17,6 +17,20 @@ if(isset($email, $passw) && !empty($email && $passw)) {
             if($key == 'cpfCnpj')
                 $_SESSION['cpfCnpj'] = $data;
         }
+            if($key == 'perfil'){
+                switch($data){
+                    case 'Motorista':
+                        header('Locations: rotas.php');
+                        break;
+                    case 'Doador':
+                        header('Locations: minhasDoacoes.php');
+                        break;
+                    case 'Beneficiario':
+                        header('Locations: meusRecebimentos.php');
+                        break;
+                }
+            }
+
 
 		header("location: gerenciamento.php");
 	}else
