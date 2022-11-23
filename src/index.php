@@ -155,7 +155,7 @@ require_once "../config.php";
           <form class="row g-3 needs-validation" action="login.php" method="post">
             <div class="col-md-12">
               <label for="validationCustom01" class="form-label text-secondary">Seu e-mail</label>
-              <input type="text" name=" " class="form-control" id="validationCustom01" placeholder="seuEmail@exemplo.com" required>
+              <input type="text" name="email" class="form-control" id="validationCustom01" placeholder="seuEmail@exemplo.com" required>
               <div class="valid-feedback">
                 Sucesso!
               </div>

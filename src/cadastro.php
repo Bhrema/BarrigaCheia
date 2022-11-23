@@ -2,7 +2,7 @@
 require "../config.php";
 
 //validando os dados
-
+echo $_POST['input_nome'];
     // validando nome
     $input_name = isset($_POST["input_nome"]) ? trim($_POST["input_nome"]) : '';
     if(empty($input_name))
@@ -62,18 +62,16 @@ require "../config.php";
         $verpassw_err = "As senhas não correspondem, favor repetir o processo.";
     else{
         $passw = $input_passw;
-        //$verpassw = true;
+        $verpassw = $input_verpassw;
     }
 
-    if(empty($nome_err) && empty($email_err) && empty($cep_err) && empty($uf_err) 
-       && empty($cpfCnpj_err) && empty($passw_err) && empty($verpassw_err)){
 
-        $sql = "INSERT INTO cadastro (nome, email, cep, numero, complemento, uf, cpfCnpj, passw, verpassw)
-         VALUES ('$nome', '$email', '$cep', '$numero', '$complemento', '$uf', '$cpfCnpj', '$passw', '$verpassw')";
-         
-        if($conn->query($sql) === TRUE){
-            header('Location: index.php');
-        }
-    }   
+    $sql = "INSERT INTO cadastro (nome, email, cep, numero, complemento, uf, cpfCnpj, passw, verpassw)
+        VALUES ('$nome', '$email', '$cep', '$numero', '$complemento', '$uf', '$cpfCnpj', '$passw', '$verpassw')";
+        
+    if($conn->query($sql) === TRUE){
+        header('Location: index.php');
+    }
+       
 
 

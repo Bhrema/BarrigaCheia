@@ -118,31 +118,10 @@
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Rotas
+              <p>Gerenciamento
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Gerenciamento</p>  
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Minhas doações</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Meus recebimentos</p>
-                </a>
-              </li>
-            </ul>
           </li>
         </ul>
       </nav>
@@ -152,47 +131,15 @@
   </aside>
   <!-- content -->
   <section class="content-wrapper">
-    <!-- <div class="text-end">
-      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalLogin">
-        Login
-      </button>
-    </div> -->
-    
-    <!-- tabela de rotas -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Coleta</th>
-          <th scope="col">Entrega</th>
-          <th scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Avenida sete de setembro, 3302</td>
-          <td>Rua das flores, 2002</td>
-          <td>Aguardando coleta</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Avenida presidente Kennedy, 101</td>
-          <td>Rua Regina Schulman, 367</td>
-          <td>Entrega realizada</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Rua da paz, 111</td>
-          <td>Eugenio José de Souza, 993</td>
-          <td>Doador não encontrado</td>
-
-          
-        </tr>
-      </tbody>
-    </table>
-    <!-- fim tabela de rotas -->
-
+    <form class="row g-3 needs-validation ms-3 pb-3" action="gerencia.php" method="post">
+      <div class="col-md-6">
+        <label for="validationCustom01" class="form-label text-secondary">Nome Completo</label>
+        <input type="text" name="input_busca" class="form-control"  value="" required>
+        <div class="valid-feedback">
+          Sucesso!
+        </div>
+      </div>
+      <input type="submit" class="btn btn-primary" name="btnSend" id="btnSend" value="Buscar">
   </section>
   
 </body>
