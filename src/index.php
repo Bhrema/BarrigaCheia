@@ -45,7 +45,7 @@ require_once "../config.php";
           </div>
         </div>
         <!-- Modal Cadastrar-->
-    <div class="modal fade" id="modalCadastrar" tabindex="1000" action=cadastro.php method="post" aria-labelledby="modalCadastrarLabel" aria-hidden="true">
+    <div class="modal fade" id="modalCadastrar" tabindex="1000" aria-labelledby="modalCadastrarLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -133,10 +133,10 @@ require_once "../config.php";
                   </div>
                 </div>
               </div>
-            <div class="modal-footer">
-              <input type="submit" class="btn btn-primary" name="btnSend" id="btnSend" value="Cadastrar ">
-            </div>
-          </form>
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" name="btnSend" id="btnSend" value="Cadastrar ">
+              </div>
+            </form>
         </div>
       </div>
     </div>

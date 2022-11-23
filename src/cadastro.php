@@ -2,7 +2,7 @@
 require "../config.php";
 
 //validando os dados
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+echo $_POST['input_nome'];
     // validando nome
     $input_name = isset($_POST["input_nome"]) ? trim($_POST["input_nome"]) : '';
     if(empty($input_name))
@@ -45,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else
         $cpfCnpj = addslashes($input_cpfCnpj);
 
-    //validando numero
+    //validando numero talvez aqui esteja quebrando
     $input_numero = isset($_POST["input_numero"]) ? trim($_POST["input_numero"]) : '';
     if(!empty($input_numero))
         $numero = addslashes($input_numero);
@@ -68,12 +68,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(!isset($nome_err) && !isset($email_err) && !isset($cep_err) && !isset($uf_err) 
        && !isset($cpfCnpj_err) && !isset($passw_err) && !isset($verpassw_err)){
 
-        $sql = "INSERT INTO cadastro (nome, email, cep, numero, complemento, uf, cpfCnpj, passw, verpassw)
-         VALUES ('$nome', '$email', '$cep', '$numero', '$complemento', '$uf', '$cpfCnpj', '$passw', '$verpassw')";
-         
-        if($conn->query($sql) === TRUE){
-            header("location: index.php");
-        }
-    }   
-}
+    $sql = "INSERT INTO cadastro (nome, email, cep, numero, complemento, uf, cpfCnpj, passw, verpassw)
+        VALUES ('$nome', '$email', '$cep', '$numero', '$complemento', '$uf', '$cpfCnpj', '$passw', '$verpassw')";
+        
+    if($conn->query($sql) === TRUE){
+        header('Location: index.php');
+    }
+       
+
 
