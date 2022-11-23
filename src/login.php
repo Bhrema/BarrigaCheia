@@ -18,7 +18,7 @@ if(isset($email, $passw) && !empty($email && $passw)) {
                 $_SESSION['cpfCnpj'] = $data;
         }
 
-		header("location: index.php");
+		header("location: gerenciamento.php");
 	}else
 		$_SESSION['msg'] = 'Campos preenchidos incorretamente!';
 }

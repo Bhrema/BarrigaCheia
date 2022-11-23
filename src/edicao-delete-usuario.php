@@ -137,6 +137,12 @@ $(document).ready(function(){
 <body>
 <div class="container-xl">
     <div class="table-responsive">
+        <div style="color: red;">
+            <?= $_SESSION['editError'] ?? '' ?>
+            <?php $_SESSION['editError'] = '' ?>
+            <?= $_SESSION['deleteError'] ?? '' ?>
+            <?php $_SESSION['deleteError'] = '' ?>
+        </div>
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -169,7 +175,7 @@ $(document).ready(function(){
                         <td><?php echo $user['email']; ?></td>
                         <td><?php echo $user['cep']; ?></td>
                         <td><?php echo $user['numero']; ?></td>
-                        <td>Motorista</td>
+                        <td><?php echo $user['perfil']; ?></td>
                         <td>
                             <a href="edit.php?cpfCnpj=<?= $user['cpfCnpj']; ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a href="delete.php?cpfCnpj=<?= $user['cpfCnpj']; ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>

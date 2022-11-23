@@ -1,3 +1,17 @@
+<?php
+  session_start();
+  require_once "../config.php";
+
+  if(!isset($_SESSION['cpfCnpj']))
+    header("location: index.php");
+    
+
+  $sql = "SELECT * FROM doacao";
+ 
+  $doacoes = $conn->query($sql);
+  $doacoes->fetch_assoc();
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -119,7 +133,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Rotas
+                Doações
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -131,44 +145,26 @@
     <!-- /.sidebar -->
   </aside>
   <!-- content -->
-  <section class="content-wrapper">
-    <!-- <div class="text-end">
-      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalLogin">
-        Login
-      </button>
-    </div> -->
-    
+  <section class="content-wrapper">    
     <!-- tabela de rotas -->
-
-    <!-- inserir aqui o php -->
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">ID</th>
           <th scope="col">Descicao</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Carregamento feijão</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Carregamento arroz</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Carregamento cebola</td>
-
-          
-        </tr>
+        <?php foreach ($doacoes as $doacao): ?>
+          <tr>
+            <th scope="row"><?= $doacao['id'] ?></th>
+            <td><?= $doacao['descricao'] ?></td>
+          </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
     <!-- fim tabela de rotas -->
-
   </section>
-  
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>

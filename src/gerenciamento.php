@@ -1,10 +1,10 @@
 <?php
   session_start();
+  require_once "../config.php";
 
   if(!isset($_SESSION['cpfCnpj']))
     header("location: index.php");
     
-  require_once "../config.php";
 
   $sql = "SELECT * FROM cadastro";
  
