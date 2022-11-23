@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $uf = $input_uf;
 
     //validando cpf/cnpj
-    $input_cpfCnpj = isset($_POST["input_numero"]) ? trim($_POST["input_numero"]): '';
+    $input_cpfCnpj = isset($_POST["input_cpfCnpj"]) ? trim($_POST["input_cpfCnpj"]): '';
     if(empty($input_cpfCnpj))
         $cpfCnpj_err = "Por favor entre com um CPF/CNPJ";
     else
@@ -61,12 +61,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($input_passw != $input_verpassw)
         $verpassw_err = "As senhas não correspondem, favor repetir o processo.";
     else{
-        $passw = $input_passw;
+        $passw = sha1($input_passw);
         $verpassw = true;
     }
 
-    if(empty($nome_err) && empty($email_err) && empty($cep_err) && empty($uf_err) 
-       && empty($cpfCnpj_err) && empty($passw_err) && empty($verpassw_err)){
+    if(!isset($nome_err) && !isset($email_err) && !isset($cep_err) && !isset($uf_err) 
+       && !isset($cpfCnpj_err) && !isset($passw_err) && !isset($verpassw_err)){
 
         $sql = "INSERT INTO cadastro (nome, email, cep, numero, complemento, uf, cpfCnpj, passw, verpassw)
          VALUES ('$nome', '$email', '$cep', '$numero', '$complemento', '$uf', '$cpfCnpj', '$passw', '$verpassw')";

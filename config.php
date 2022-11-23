@@ -2,8 +2,8 @@
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 $DB_SERVER = 'localhost';
-$DB_USERNAME = 'root';
-$DB_PASSWORD = '';
+$DB_USERNAME = 'Adriano';
+$DB_PASSWORD = 'Ad0023123@';
 $DB_NAME = 'barrigaCheia';
  
 try {

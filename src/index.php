@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "../config.php";
 ?>
 
@@ -33,7 +32,6 @@ require_once "../config.php";
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
               <input type="search" class="form-control form-control-dark" placeholder="Pesquise..." aria-label="Search">
             </form>
-    
             <div class="text-end">
               <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalCadastrar">
                 Cadastre-se
