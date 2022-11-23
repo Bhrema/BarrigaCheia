@@ -131,15 +131,6 @@
   </aside>
   <!-- content -->
   <section class="content-wrapper">
-    <form class="row g-3 needs-validation ms-3 pb-3" action="gerencia.php" method="post">
-      <div class="col-md-6">
-        <label for="validationCustom01" class="form-label text-secondary">Nome Completo</label>
-        <input type="text" name="input_busca" class="form-control"  value="" required>
-        <div class="valid-feedback">
-          Sucesso!
-        </div>
-      </div>
-      <input type="submit" class="btn btn-primary" name="btnSend" id="btnSend" value="Buscar">
       <?php
       include "edicao-delete-usuario.php";
       ?>

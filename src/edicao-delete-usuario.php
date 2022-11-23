@@ -142,11 +142,13 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-sm-8"><h2>Detalhes dos usuários</h2></div>
                     <div class="col-sm-4">
+                    <form class="row g-3 needs-validation ms-3 pb-3" action="gerencia.php" method="post">
                         <div class="search-box">
-                            <i class="material-icons">&#xE8B6;</i>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
+                        <input type="text" name="input_busca" class="form-control" placeholder="Pesquisa&hellip;">
+                        <div class="valid-feedback">
+                            Sucesso!
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <table class="table table-striped table-hover table-bordered">
@@ -196,9 +198,9 @@ $(document).ready(function(){
                         <td>28023</td>
                         <td>Spain</td>
                         <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <button href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></button>
+                            <button class="edit" data-toggle="modal" data-target="#editaUser"><i class="material-icons">&#xE254;</i></button>
+                            <button href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></button>
                         </td>
                     </tr>
                     <tr>
@@ -243,5 +245,65 @@ $(document).ready(function(){
             </div>
         </div>
     </div>  
-</div>   
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editaUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Atualização de cadastro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 needs-validation" action="atualizaCadastro.php" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label text-secondary">Nome Completo</label>
+                    <input type="text" name="input_nome" class="form-control"  value="" required>
+                <div class="valid-feedback">
+                    Sucesso!
+                </div>
+                </div>
+                <div class="col-md-6">
+                <label for="email" class="form-label text-secondary">Email</label>
+                <input type="email" name="input_email" class="form-control"required>
+                <div class="invalid-feedback">
+                    Por favor entre com um email para receber as novidades.
+                </div>
+            </div>
+            <div class="col-md-4">
+            <label for="validationCustom03" class="form-label text-secondary">CEP</label>
+                <input type="text" name="input_cep" class="form-control"  value="" required>
+                <div class="invalid-feedback">
+                    Por favor entre com um CEP válido.
+                </div>
+            </div>
+            <div class="col-md-2">
+            <label for="validationCustom04" class="form-label text-secondary">Número</label>
+                <input type="text" name="input_numero" class="form-control"  value="" required>
+                <div class="invalid-feedback">
+                    Por favor entre com um número válido.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom05" class="form-label text-secondary">Perfil</label>
+                <input type="text" name="input_perfil" class="form-control"  value="" required>
+            <div class="invalid-feedback">
+                Por favor entre com um número válido.
+            </div>
+            <div class="invalid-feedback">
+                Você precisa aceitar para continuar.
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" name="btnSend" id="btnSend" value="Atualizar">
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
