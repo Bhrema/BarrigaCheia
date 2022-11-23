@@ -16,23 +16,24 @@ if(isset($email, $passw) && !empty($email && $passw)) {
         foreach ($check->fetch_assoc() as $key => $data){
             if($key == 'cpfCnpj')
                 $_SESSION['cpfCnpj'] = $data;
-        }
             if($key == 'perfil'){
                 switch($data){
                     case 'Motorista':
-                        header('Locations: rotas.php');
+                        header('Location: rotas.php');
                         break;
                     case 'Doador':
-                        header('Locations: minhasDoacoes.php');
+                        header('Location: minhasDoacoes.php');
                         break;
                     case 'Beneficiario':
-                        header('Locations: meusRecebimentos.php');
+                        header('Location: meusRecebimentos.php');
                         break;
+                    default: 
+                        header("location: gerenciamento.php");
                 }
             }
-
-
-		header("location: gerenciamento.php");
-	}else
+        }
+	}else{
 		$_SESSION['msg'] = 'Campos preenchidos incorretamente!';
+        header("location: index.php");
+    }
 }
